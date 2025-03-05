@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../api/getProducts.jsx";
+import {ProductCard} from "../components/Cards/ProductCard.jsx";
+import {Link} from "react-router-dom";
 
 export function RenderHome() {
     const [products, setProducts] = useState([]);
@@ -19,10 +21,18 @@ export function RenderHome() {
             <div>
                 {products.length ? (
                     products.map((product) => (
-                        <>
-                            <h2 key={product.id}>{product.title}</h2>
-                            <img src={product.image.url} alt=""/>
-                        </>
+                        <Link
+                            to={"/product/" + product.id}
+                            key={product.id}
+                        >
+                            <ProductCard
+                                image={product.image.url}
+                                title={product.title}
+                                price={product.price}
+                                discountedPrice={product.discountedPrice}
+                                rating={product.rating}
+                            />
+                        </Link>
                     ))
                 ) : (
                     "loading..."
