@@ -1,12 +1,11 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react"
 import {API_BASE} from "../utility/constants.jsx";
+import {AddToCartBtn} from "../components/buttons/AddToCart.jsx";
 
 export function RenderProduct() {
     const { id } = useParams();
     const [product, setProduct] = useState(false);
-
-    console.log(API_BASE + id)
 
     useEffect(() => {
         async function getProduct() {
@@ -30,6 +29,9 @@ export function RenderProduct() {
                     />
                     <h2>{product.title}</h2>
                     <p>{product.description}</p>
+                    <AddToCartBtn
+                    product={product}
+                    />
                 </div>
             ) : (
                 <p>loading</p>
