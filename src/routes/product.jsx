@@ -7,15 +7,22 @@ export function RenderProduct() {
     const { id } = useParams();
     const [product, setProduct] = useState(false);
 
+
     useEffect(() => {
-        async function getProduct() {
-            const res = await fetch(API_BASE + id);
-            const data = await res.json();
-            console.log(data);
-            setProduct(data.data);
-        }
-        getProduct();
-    }, []);
+        const fetchProduct = async () => {
+            try {
+                const data = await getSpecificProduct(id);
+                setProduct(data);
+            } catch (error) {
+                console.error("Error fetching product:", error);
+            }
+        };
+        fetchProduct();
+    }, [id]);
+
+    if (!product) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <>
@@ -39,3 +46,4 @@ export function RenderProduct() {
         </>
     )
 }
+
