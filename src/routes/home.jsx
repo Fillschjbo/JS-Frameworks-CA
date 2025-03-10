@@ -18,7 +18,7 @@ export function RenderHome() {
 
     return (
         <>
-            <div>
+            <div className={"flex flex-wrap justify-center gap-16 p-16 w-screen"}>
                 {products.length ? (
                     products.map((product) => (
                         <Link

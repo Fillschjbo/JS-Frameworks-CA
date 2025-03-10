@@ -8,7 +8,7 @@ import {RenderHome, RenderCart, RenderProduct, RenderContact, RenderCheckoutSucc
 const Layout = () => (
     <>
     <Header/>
-        <main className={"container mx-auto p-4 bg-[#FFF4EC]"}>
+        <main className={"w-screen bg-[#EDF3FF] flex items-center justify-center"}>
             <Outlet/>
         </main>
         <Footer/>
