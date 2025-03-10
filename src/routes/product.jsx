@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getSpecificProduct } from "../api/getSpecificProduct.jsx";
+import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react"
+import {API_BASE} from "../utility/constants.jsx";
+import {AddToCartBtn} from "../components/buttons/AddToCart.jsx";
 
 export function RenderProduct() {
     const { id } = useParams();
-    const [product, setProduct] = useState(null);
+    const [product, setProduct] = useState(false);
+
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -23,12 +25,25 @@ export function RenderProduct() {
     }
 
     return (
-        <div>
-            <h1>{product.title}</h1>
-            <img src={product.image.url} alt=""/>
-            <p>{product.description}</p>
-            <p>Price: ${product.price}</p>
-            <Link to="/">Back to Products</Link>
-        </div>
-    );
+        <>
+            <h1>Specific</h1>
+            {product ? (
+                <div>
+                    <img
+                        src={product.image.url}
+                        alt={product.image.alt}
+                        className="h-64"
+                    />
+                    <h2>{product.title}</h2>
+                    <p>{product.description}</p>
+                    <AddToCartBtn
+                    product={product}
+                    />
+                </div>
+            ) : (
+                <p>loading</p>
+            )}
+        </>
+    )
 }
+
