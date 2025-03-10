@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react"
-import {API_BASE} from "../utility/constants.jsx";
-import {AddToCartBtn} from "../components/buttons/AddToCart.jsx";
+import {getSpecificProduct} from "../api/getSpecificProduct.jsx";
+import {AddToCartBtn} from "../components/Buttons/AddToCart.jsx";
 
 export function RenderProduct() {
     const { id } = useParams();
