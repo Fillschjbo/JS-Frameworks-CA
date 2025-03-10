@@ -1,8 +1,10 @@
 import { useCart } from "../store.js";
 import {CartItem} from "../components/Cards/CartItem.jsx";
+import {Link, useNavigate} from "react-router-dom";
 
 export function RenderCart() {
     const { cart, updateQuantity } = useCart();
+    const navigate = useNavigate();
 
     const getEffectivePrice = (product) => {
         return product.discountedPrice && product.discountedPrice < product.price
@@ -12,7 +14,6 @@ export function RenderCart() {
 
     return (
         <>
-            <h1>Cart Page</h1>
             {cart.length === 0 ? (
                 <p>Your cart is empty.</p>
             ) : (
@@ -39,6 +40,13 @@ export function RenderCart() {
                             )
                             .toFixed(2)}
                     </p>
+                    <button>
+                        <Link to={"/checkoutSuccess/"} onClick={(e) => {
+                            e.preventDefault();
+                            navigate('/checkoutSuccess/')
+                        }}
+                        >CheckOut</Link>
+                    </button>
                 </div>
             )}
         </>

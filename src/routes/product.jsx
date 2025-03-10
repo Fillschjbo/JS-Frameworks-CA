@@ -26,7 +26,6 @@ export function RenderProduct() {
 
     return (
         <>
-            <h1>Specific</h1>
             {product ? (
                 <div>
                     <img
