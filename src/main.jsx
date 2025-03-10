@@ -8,7 +8,7 @@ import {RenderHome, RenderCart, RenderProduct, RenderContact, RenderCheckoutSucc
 const Layout = () => (
     <>
     <Header/>
-        <main className={"container mx-auto p-4"}>
+        <main className={"container mx-auto p-4 bg-[#FFF4EC]"}>
             <Outlet/>
         </main>
         <Footer/>
